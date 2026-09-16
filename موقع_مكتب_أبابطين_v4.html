@@ -3051,6 +3051,52 @@ iframe{max-width:100%}
 
 :root{--mobile-nav-height:72px}
 @media(max-width:600px){.journey .jstep{flex-direction:column;text-align:center}.home-intro .kicker{max-width:100%}}
+
+/* Phone layouts for all inner pages and shared controls. */
+.quote-band .qmark svg{display:block;width:100%;height:auto;max-height:100%}
+@media(max-width:480px){
+  .page-head{padding:32px 0 24px;margin-bottom:24px}
+  .page-head.wrap{padding-inline:16px}
+  #pg-en .page-head .kicker{display:block;overflow-wrap:anywhere}
+  #pg-en .page-head{overflow:clip}
+  #pg-en .page-head .kicker::before,#pg-en .page-head .kicker::after{display:none}
+  .page-head .kicker{max-width:100%;font-size:12px;letter-spacing:.02em;line-height:1.8;gap:6px;margin-bottom:12px}
+  .page-head .kicker::before,.page-head .kicker::after{width:16px;flex-shrink:0}
+  .page-head .statement{font-size:28px;line-height:1.4;margin-bottom:14px}
+  .page-head .lede{font-size:15px;line-height:1.85}
+  .back-link{min-height:44px;margin-bottom:14px;white-space:normal}
+  .sec{padding:40px 0}
+  .sec-head{gap:16px;margin-bottom:24px}
+  .sec-head h2{font-size:26px}
+  .ph-acts a{width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center}
+  .faq-item summary{padding:16px;font-size:16px}
+  .faq-item p{padding:0 16px 16px}
+  .qchecks label{min-height:44px}
+  .qchecks input{flex-shrink:0}
+  .qcalc-field label{flex-wrap:wrap;gap:6px}
+  .lb-prev{right:12px}
+  .lb-next{left:12px}
+  .lb-close{top:12px;left:12px}
+}
+
+/* Compact phone hero: keep the introduction and project preview in view. */
+@media(max-width:480px){
+  :root{--mobile-nav-height:64px}
+  .home-brand{padding:20px 16px 0}
+  .home-brand img{height:54px;max-height:none;width:auto;max-width:100%;object-fit:contain}
+  .home-intro.centered{padding:20px 16px 24px}
+  .home-intro .kicker{font-size:12px;line-height:1.7;padding:6px 12px;margin-bottom:16px}
+  .home-intro .statement{font-size:clamp(28px,8.9vw,38px);line-height:1.4;margin-bottom:16px}
+  .home-intro .lede{font-size:15px;line-height:1.85;margin-bottom:22px}
+  .home-intro .hero-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0}
+  .home-intro .hero-actions a{width:100%;min-height:48px;padding:10px 8px;font-size:14px;line-height:1.5;gap:8px}
+  .home-hero.wrap{width:calc(100% - 32px);padding:0;margin:0 16px 32px;border-radius:14px}
+  .home-hero .slides{aspect-ratio:4/3;min-height:0;max-height:none}
+  .home-hero figcaption{padding:12px;gap:8px;margin:0}
+  .home-hero figcaption p{font-size:12px;line-height:1.7}
+  .home-hero .slide-dots{flex-wrap:wrap;justify-content:center}
+}
+
 </style>
 </head>
 <body>
