@@ -2976,6 +2976,82 @@ html[data-theme="light"] .f-grid img {
 }
 
 </style>
+<style id="responsive-layout">
+/* Responsive layout corrections shared by the standalone site versions. */
+:root{--mobile-nav-height:80px}
+:where(.wrap,.page,.nav,.studio-hero) :where(div,section,article,figure,form,label,ul){min-width:0}
+:where(p,h1,h2,h3,h4,a,label,figcaption){overflow-wrap:anywhere}
+input,select,textarea{min-width:0;max-width:100%}
+iframe{max-width:100%}
+.statement{white-space:normal}
+.qgrid{grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr))}
+.agn-grid,.ag-resp{grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr))}
+.works-list,.gallery{grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr))}
+.hero-actions,.sec-head,.style-body,.cover-bar{flex-wrap:wrap}
+@media(max-width:1100px){
+  .nav{height:var(--mobile-nav-height);min-height:0;flex-wrap:nowrap;gap:12px}
+  .nav .brand{min-width:0;flex-shrink:1}
+  .nav .brand img{max-width:100%;object-fit:contain}
+  .nav-ctrls{margin-inline-start:auto;gap:8px}
+  .burger{display:block;min-width:44px;min-height:44px}
+  .nav-consult-btn{display:none}
+  .nav-links{display:none;position:absolute;inset:var(--mobile-nav-height) 0 auto;width:100%;height:auto;max-height:calc(100vh - var(--mobile-nav-height));max-height:calc(100dvh - var(--mobile-nav-height));margin:0;padding:16px 24px 24px;overflow-y:auto;overscroll-behavior:contain;transform:none;opacity:1;visibility:visible;pointer-events:auto;flex-direction:column;align-items:stretch;gap:4px;z-index:1001;background:var(--bg)}
+  body.menu-open .nav-links{display:flex;transform:none}
+  .nav-links a{display:block;white-space:normal;min-height:44px;padding:10px 12px}
+  body.menu-open{overflow:hidden}
+  body.menu-open::after{inset:var(--mobile-nav-height) 0 0}
+  .grid3,.team-grid,.svcs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .wrap{padding-inline:clamp(16px,4vw,30px)}
+  .nav .brand img{width:140px;height:auto;max-height:48px}
+  .home-intro .statement{font-size:clamp(32px,8vw,58px);white-space:normal;letter-spacing:0}
+  .page-head .statement{font-size:clamp(28px,6vw,44px)}
+  .ed-grid,.contact-grid,.contact-grid.two,.values{grid-template-columns:minmax(0,1fr)}
+  .gallery .g-item.wide{grid-column:span 1}
+  .numbers{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}
+  .numbers>div{border-inline-end:0}
+  .partners-mini{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding-inline:0}
+  .partners-mini img{max-width:100%}
+  .home-hero figcaption{flex-wrap:wrap;gap:12px}
+  .fig figcaption i,.style-body i,.cover-bar i{white-space:normal}
+  .qform input,.qform select,.qform textarea,.qcalc-field select{font-size:16px}
+  .terms-block{display:block;padding:20px}
+  .cdlegend{min-width:0;flex-basis:100%}
+  .cta-band .big{font-size:clamp(22px,5vw,34px);white-space:normal}
+  .f-bottom{flex-direction:column;text-align:center}
+}
+@media(max-width:540px){
+  .nav{gap:8px}
+  .nav .brand img{width:112px}
+  .nav-ctrls{gap:4px}
+  #langBtn,#themeToggle{width:40px;height:44px}
+  .grid3,.team-grid,.svcs-grid,.creds,.pubs,.styles-grid,.covers,.works-list,.gallery,.gallery-tall,.qgrid,.sa-chips{grid-template-columns:minmax(0,1fr)}
+  .home-intro .kicker{letter-spacing:0;white-space:normal}
+  .hero-actions{gap:14px}
+  .hero-actions a{max-width:100%;text-align:center}
+  .works-strip .fig{flex-basis:88%;min-width:0}
+  .works-list .wide7 .im{width:100%;min-height:0;aspect-ratio:4/3}
+  .jstep{flex-basis:100%}
+  .quick-calc-card,.qform,.chart-card{padding:20px 16px}
+  .qcalc-results{padding:16px;gap:16px}
+  .qres-breakdown{grid-template-columns:minmax(0,1fr)}
+  .qsend{flex-direction:column;align-items:stretch}
+  .qbtn{justify-content:center;white-space:normal;padding-inline:16px}
+  .ajtabs{flex-wrap:wrap}
+  .ajtabs button{white-space:normal;flex-basis:100%}
+  .ajprice{width:100%;grid-template-columns:minmax(0,1fr)}
+  .ag-resp>div{flex-wrap:wrap}
+  #waFloat{width:48px;height:48px;right: auto;left:auto;inset-inline-start:12px;inset-inline-end:auto;bottom:calc(12px + env(safe-area-inset-bottom))}
+  #toTop{right:auto;left:auto;inset-inline-end:12px;inset-inline-start:auto;bottom:calc(12px + env(safe-area-inset-bottom))}
+  footer{padding-bottom:80px}
+  #lightbox{padding:12px}
+  #lightbox img{max-width:100%;max-height:calc(100dvh - 140px)}
+}
+
+:root{--mobile-nav-height:72px}
+@media(max-width:600px){.journey .jstep{flex-direction:column;text-align:center}.home-intro .kicker{max-width:100%}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">تجاوز إلى المحتوى</a>
@@ -6360,6 +6436,29 @@ document.addEventListener('click', function(e) {
 
 route();
 
+</script>
+<script>
+// Release mobile scroll locking when switching back to the desktop navigation.
+(() => {
+  const mobile = window.matchMedia('(max-width:1100px)');
+  const button = document.querySelector('.burger');
+  const links = document.querySelector('.nav-links');
+  if (!button || !links) return;
+  links.id = links.id || 'primary-navigation';
+  button.setAttribute('aria-controls', links.id);
+  const sync = () => button.setAttribute('aria-expanded', String(document.body.classList.contains('menu-open')));
+  sync();
+  new MutationObserver(sync).observe(document.body, {attributes:true, attributeFilter:['class']});
+  mobile.addEventListener('change', () => {
+    if (!mobile.matches) document.body.classList.remove('menu-open');
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && document.body.classList.contains('menu-open')) {
+      document.body.classList.remove('menu-open');
+      button.focus();
+    }
+  }, true);
+})();
 </script>
 </body>
 </html>
